@@ -23,6 +23,18 @@ new_window none
 new_float normal
 hide_edge_borders both
 
+for_window [class="Thunar"] floating enable
+
+for_window [class="X-terminal-emulator"]  move container to workspace 2; workspace 2
+for_window [class="Google-chrome"]  move container to workspace 1; workspace 1
+for_window [class="Firefox"]  move container to workspace 1; workspace 1
+for_window [class="Code"]  move container to workspace 4; workspace 4
+for_window [class="qt-note.py"]  move container to workspace 4; workspace 4
+
+#assign [class="Google-chrome"] 1
+#assign [class="X-terminal-emulator"] 2
+#assign [class="Code"] 4
+#assign [class="qt-note.py"] 4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -49,8 +61,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+bindcode $mod+49 exec --no-startup-id rofi -show combi
+bindsym $mod+Tab exec --no-startup-id rofi -show combi
+
 # start a terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec jumpapp $term
+bindsym $mod+q exec jumpapp chrome
+bindsym $mod+n exec jumpapp qt-note.sh
 
 # kill focused window
 bindsym $mod+F1 kill
@@ -126,6 +143,17 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# resize window (you can also use the mouse for that)
+#mode "workspace change" {
+#	bindsym l workspace next
+#	bindsym h workspace prev
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#        bindsym $mod+Tab mode "default"
+#}
+
+#bindsym $mod+Tab mode "workspace change"
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -168,10 +196,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
