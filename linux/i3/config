@@ -65,7 +65,7 @@ bindcode $mod+49 exec --no-startup-id rofi -show combi
 bindsym $mod+Tab exec --no-startup-id rofi -show combi
 
 # start a terminal
-bindsym $mod+Return exec jumpapp $term
+bindsym $mod+Return exec $term
 bindsym $mod+q exec jumpapp chrome
 bindsym $mod+n exec jumpapp qt-note.sh
 
