@@ -21,7 +21,8 @@ set $term x-terminal-emulator
 font pango:monospace 8
 new_window none
 new_float normal
-hide_edge_borders both
+#hide_edge_borders both
+hide_edge_borders auto
 
 for_window [class="Thunar"] floating enable
 
@@ -30,7 +31,7 @@ for_window [class="Google-chrome"]  move container to workspace 1; workspace 1
 for_window [class="Firefox"]  move container to workspace 1; workspace 1
 for_window [class="Code"]  move container to workspace 4; workspace 4
 for_window [class="qt-note.py"]  move container to workspace 4; workspace 4
-for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3
+for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3; layout tabbed
 
 
 #assign [class="Google-chrome"] 1
