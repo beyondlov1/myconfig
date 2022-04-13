@@ -30,6 +30,8 @@ for_window [class="Google-chrome"]  move container to workspace 1; workspace 1
 for_window [class="Firefox"]  move container to workspace 1; workspace 1
 for_window [class="Code"]  move container to workspace 4; workspace 4
 for_window [class="qt-note.py"]  move container to workspace 4; workspace 4
+for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3
+
 
 #assign [class="Google-chrome"] 1
 #assign [class="X-terminal-emulator"] 2
@@ -50,6 +52,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
+exec -–no-startup-id vmware-user-suid-wrapper
+
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -187,6 +192,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym $mod+i move scratchpad
 bindsym $mod+o scratchpad show
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
