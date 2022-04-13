@@ -24,6 +24,10 @@ new_float normal
 #hide_edge_borders both
 hide_edge_borders smart
 
+# popups
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
 for_window [class="Thunar"] floating enable
 
 for_window [class="X-terminal-emulator"]  move container to workspace 2; workspace 2
