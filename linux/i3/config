@@ -22,7 +22,7 @@ font pango:monospace 8
 new_window none
 new_float normal
 #hide_edge_borders both
-hide_edge_borders auto
+hide_edge_borders smart
 
 for_window [class="Thunar"] floating enable
 
