@@ -36,9 +36,13 @@ for_window [class="Firefox"]  move container to workspace 1; workspace 1
 for_window [class="Code"]  move container to workspace 4; workspace 4
 for_window [instance="qt-note.py"] sticky enable
 for_window [instance="qt-note.py"] floating enable
-for_window [instance="qt-note.py"] resize set width 600 height 600
-for_window [instance="qt-note.py"] move position 1941 762
+#for_window [instance="qt-note.py"] resize set width 20 ppt height 20 ppt
+#for_window [instance="qt-note.py"] move position center; move position 900 762 
+#for_window [instance="qt-note.py"] move position center
+for_window [instance="qt-note.py"] exec --no-startup-id i3-msg resize set width 400 300; exec --no-startup-id i3-msg move position 1530 754
 for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3; layout tabbed
+
+bindsym $mod+u floating toggle; sticky enable; resize set 820 720;  move absolute position 1100 20
 
 
 #assign [class="Google-chrome"] 1
@@ -80,7 +84,7 @@ bindsym $mod+Tab exec --no-startup-id rofi -show combi
 # start a terminal
 bindsym $mod+Return exec $term
 bindsym $mod+q exec jumpapp chrome
-bindsym $mod+n exec jumpapp qt-note.sh
+bindsym $mod+n exec qt-note.sh
 
 # kill focused window
 bindsym $mod+F1 kill
