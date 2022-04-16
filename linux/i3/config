@@ -21,7 +21,6 @@ set $term x-terminal-emulator
 font pango:monospace 8
 new_window none
 new_float normal
-#hide_edge_borders both
 hide_edge_borders smart
 
 # popups
