@@ -30,11 +30,14 @@ for_window [window_role="task_dialog"] floating enable
 
 for_window [class="Thunar"] floating enable
 
-for_window [class="X-terminal-emulator"]  move container to workspace 2; workspace 2
+#for_window [class="X-terminal-emulator"]  move container to workspace 2; workspace 2
 for_window [class="Google-chrome"]  move container to workspace 1; workspace 1
 for_window [class="Firefox"]  move container to workspace 1; workspace 1
 for_window [class="Code"]  move container to workspace 4; workspace 4
-for_window [class="qt-note.py"]  move container to workspace 4; workspace 4
+for_window [instance="qt-note.py"] sticky enable
+for_window [instance="qt-note.py"] floating enable
+for_window [instance="qt-note.py"] resize set width 600 height 600
+for_window [instance="qt-note.py"] move position 1941 762
 for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3; layout tabbed
 
 
