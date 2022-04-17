@@ -23,6 +23,8 @@ new_window none
 new_float normal
 hide_edge_borders smart
 
+exec_always --no-startup-id compton
+
 # popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -41,8 +43,9 @@ for_window [instance="qt-note.py"] floating enable
 for_window [instance="qt-note.py"] exec --no-startup-id i3-msg resize set width 400 300; exec --no-startup-id i3-msg move position 1530 754
 for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3; layout tabbed
 
-bindsym $mod+u floating toggle; sticky enable; resize set 820 720;  move absolute position 1100 20
+#bindsym $mod+u floating toggle; sticky enable; resize set 820 720;  move absolute position 1100 20
 
+bindsym $mod+u exec /home/beyond/.config/i3/floatingtoggle.sh
 
 #assign [class="Google-chrome"] 1
 #assign [class="X-terminal-emulator"] 2
