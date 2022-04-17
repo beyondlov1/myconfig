@@ -35,17 +35,18 @@ for_window [class="Thunar"] floating enable
 for_window [class="Google-chrome"]  move container to workspace 1; workspace 1
 for_window [class="Firefox"]  move container to workspace 1; workspace 1
 for_window [class="Code"]  move container to workspace 4; workspace 4
-for_window [instance="qt-note.py"] sticky enable
-for_window [instance="qt-note.py"] floating enable
+#for_window [instance="qt-note.py"] sticky enable
+#for_window [instance="qt-note.py"] floating enable
 #for_window [instance="qt-note.py"] resize set width 20 ppt height 20 ppt
 #for_window [instance="qt-note.py"] move position center; move position 900 762 
 #for_window [instance="qt-note.py"] move position center
-for_window [instance="qt-note.py"] exec --no-startup-id i3-msg resize set width 400 300; exec --no-startup-id i3-msg move position 1530 754
+#for_window [instance="qt-note.py"] exec --no-startup-id i3-msg resize set width 400 300; exec --no-startup-id i3-msg move position 1530 754
+for_window [instance="qt-note.py"] exec ~/.config/i3/floatingtoggle.sh tf 1630 754 400 300
 for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3; layout tabbed
 
 #bindsym $mod+u floating toggle; sticky enable; resize set 820 720;  move absolute position 1100 20
 
-bindsym $mod+u exec ~/.config/i3/floatingtoggle.sh
+bindsym $mod+u exec ~/.config/i3/floatingtoggle.sh tf 1630 100 700 650 
 
 #assign [class="Google-chrome"] 1
 #assign [class="X-terminal-emulator"] 2
@@ -89,7 +90,7 @@ bindsym $mod+q exec jumpapp chrome
 bindsym $mod+n exec qt-note.sh
 
 # kill focused window
-bindsym $mod+F1 kill
+bindsym $mod+F1 exec --no-startup-id ~/.config/i3/floatingtoggle.sh k
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -100,10 +101,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+#bindsym $mod+$left focus left
+#bindsym $mod+$down focus down
+#bindsym $mod+$up focus up
+#bindsym $mod+$right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -113,9 +114,15 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+$left move left 200 px
-bindsym $mod+Shift+$down move down 200 px
-bindsym $mod+Shift+$up move up 200 px
+bindsym $mod+Shift+$down move down 100 px
+bindsym $mod+Shift+$up move up 100 px
 bindsym $mod+Shift+$right move right 200 px
+
+bindsym $mod+$left exec --no-startup-id ~/.config/i3/floatingtoggle.sh fl
+bindsym $mod+$down exec --no-startup-id ~/.config/i3/floatingtoggle.sh fd
+bindsym $mod+$up exec --no-startup-id ~/.config/i3/floatingtoggle.sh fu
+bindsym $mod+$right exec --no-startup-id ~/.config/i3/floatingtoggle.sh fr
+
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left

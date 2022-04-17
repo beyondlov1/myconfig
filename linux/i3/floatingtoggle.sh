@@ -21,6 +21,8 @@ function get_win_geometry()
     return 0
 }
 
+op=$1
+
 # get id of the focused window
 active_win_id=$(get_active_win)
 active_win_geometry=$(get_win_geometry $active_win_id )
@@ -44,10 +46,66 @@ if test 0 -eq $floating
 then
    new_floating_wins[${#new_floating_wins[*]}]=${active_win_item} 
 fi
-echo ${new_floating_wins[*]} > ~/.config/i3/floating.win 
-if test 1 -eq $floating 
+
+if test "tf" = $op 
+then  
+    if test 1 -eq $floating 
+    then        
+        i3-msg floating disable    
+    else
+        x=$2
+        y=$3
+        w=$4
+        h=$5
+        #i3-msg "floating enable; sticky enable; resize set 700 650;  move absolute position 1630 100"
+        i3-msg "floating enable; sticky enable; resize set $w $h;  move absolute position $x $y"
+    fi        
+    echo ${new_floating_wins[*]} > ~/.config/i3/floating.win 
+fi
+
+if test "k" = $op 
 then
-    i3-msg floating disable
-else
-    i3-msg 'floating enable; sticky enable; resize set 700 650;  move absolute position 1630 100'
+    i3-msg kill
+    echo ${new_floating_wins[*]} > ~/.config/i3/floating.win 
+fi
+
+
+if test "fr" = $op 
+then
+    if test 1 -eq $floating 
+    then
+        i3-msg focus mode_toggle  
+    else
+        i3-msg focus right 
+    fi
+fi
+
+if test "fl" = $op 
+then
+    if test 1 -eq $floating 
+    then
+        i3-msg focus mode_toggle  
+    else
+        i3-msg focus left
+    fi
+fi
+
+if test "fu" = $op 
+then
+    if test 1 -eq $floating 
+    then
+        i3-msg focus left
+    else
+        i3-msg focus up 
+    fi
+fi
+
+if test "fd" = $op 
+then
+    if test 1 -eq $floating 
+    then
+        i3-msg focus right
+    else
+        i3-msg focus down
+    fi
 fi
