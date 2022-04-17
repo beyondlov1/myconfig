@@ -45,7 +45,7 @@ for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3;
 
 #bindsym $mod+u floating toggle; sticky enable; resize set 820 720;  move absolute position 1100 20
 
-bindsym $mod+u exec /home/beyond/.config/i3/floatingtoggle.sh
+bindsym $mod+u exec ~/.config/i3/floatingtoggle.sh
 
 #assign [class="Google-chrome"] 1
 #assign [class="X-terminal-emulator"] 2
