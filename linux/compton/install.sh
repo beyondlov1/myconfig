@@ -1,0 +1,1 @@
+cp compton.conf ~/.config
