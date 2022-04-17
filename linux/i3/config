@@ -24,6 +24,7 @@ new_float normal
 hide_edge_borders smart
 
 exec_always --no-startup-id compton
+exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/brad-huchteman-stone-mountain.jpg
 
 # popups
 for_window [window_role="pop-up"] floating enable
