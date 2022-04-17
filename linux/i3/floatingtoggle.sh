@@ -33,7 +33,6 @@ floating=0
 for floating_win in $floating_wins
 do
     id=$(echo ${floating_win} | cut -d ':' -f 1 )
-    echo $id
     if test $active_win_id = $id 
     then
        floating=1
@@ -45,10 +44,10 @@ if test 0 -eq $floating
 then
    new_floating_wins[${#new_floating_wins[*]}]=${active_win_item} 
 fi
-echo $new_floating_wins > ~/.config/i3/floating.win 
+echo ${new_floating_wins[*]} > ~/.config/i3/floating.win 
 if test 1 -eq $floating 
 then
     i3-msg floating disable
 else
-    i3-msg 'floating enable; sticky enable; resize set 820 720;  move absolute position 1100 2'
+    i3-msg 'floating enable; sticky enable; resize set 700 650;  move absolute position 1630 100'
 fi
