@@ -21,6 +21,35 @@ function get_win_geometry()
     return 0
 }
 
+function get_screen_width()
+{
+    local width_path=/tmp/screen_width
+    if test -f $width_path
+    then
+        echo $(cat $width_path)
+        return 0
+    fi
+    local width=$(xrandr | grep "*+" | awk '{print $1}' | awk -F'x' '{print $1}')
+    echo $width > $width_path
+    echo $width
+    return 0
+}
+
+function get_screen_height()
+{
+    local  height_path=/tmp/screen_height
+    if test -f $height_path
+    then
+        echo $(cat $height_path)
+        return 0
+    fi
+    local height=$(xrandr | grep "*+" | awk '{print $1}' | awk -F'x' '{print $2}')
+    echo $height > $height_path
+    echo $height
+    return 0
+}
+
+
 op=$1
 
 # get id of the focused window
@@ -58,6 +87,23 @@ then
         w=$4
         h=$5
         #i3-msg "floating enable; sticky enable; resize set 700 650;  move absolute position 1630 100"
+        i3-msg "floating enable; sticky enable; resize set $w $h;  move absolute position $x $y"
+    fi        
+    echo ${new_floating_wins[*]} > ~/.config/i3/floating.win 
+fi
+
+if test "tfr" = $op 
+then  
+    if test 1 -eq $floating 
+    then        
+        i3-msg floating disable    
+    else
+        sw=$(get_screen_width)
+        sh=$(get_screen_height)
+        x=$(echo "scale=0;$2*$sw/1" | bc -l)
+        y=$(echo "scale=0;$3*$sh/1" | bc -l)
+        w=$(echo "scale=0;$4*$sw/1" | bc -l)
+        h=$(echo "scale=0;$5*$sh/1" | bc -l)
         i3-msg "floating enable; sticky enable; resize set $w $h;  move absolute position $x $y"
     fi        
     echo ${new_floating_wins[*]} > ~/.config/i3/floating.win 

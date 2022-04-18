@@ -25,6 +25,7 @@ hide_edge_borders smart
 
 exec_always --no-startup-id compton
 exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/brad-huchteman-stone-mountain.jpg
+exec_always --no-startup-id exec --no-startup-id ~/.config/i3/screen.sh
 
 # popups
 for_window [window_role="pop-up"] floating enable
@@ -42,12 +43,12 @@ for_window [class="Code"]  move container to workspace 4; workspace 4
 #for_window [instance="qt-note.py"] move position center; move position 900 762 
 #for_window [instance="qt-note.py"] move position center
 #for_window [instance="qt-note.py"] exec --no-startup-id i3-msg resize set width 400 300; exec --no-startup-id i3-msg move position 1530 754
-for_window [instance="qt-note.py"] exec ~/.config/i3/floatingtoggle.sh tf 1630 754 400 300
+for_window [instance="qt-note.py"] exec ~/.config/i3/floatingtoggle.sh tfr 0.8 0.65 0.2 0.3
 for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3; layout tabbed
 
 #bindsym $mod+u floating toggle; sticky enable; resize set 820 720;  move absolute position 1100 20
 
-bindsym $mod+u exec ~/.config/i3/floatingtoggle.sh tf 1630 100 700 650 
+bindsym $mod+u exec ~/.config/i3/floatingtoggle.sh tfr 0.8 0.1 0.4 0.6
 
 #assign [class="Google-chrome"] 1
 #assign [class="X-terminal-emulator"] 2
