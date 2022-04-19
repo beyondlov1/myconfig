@@ -43,12 +43,12 @@ for_window [class="Code"]  move container to workspace 4; workspace 4
 #for_window [instance="qt-note.py"] move position center; move position 900 762 
 #for_window [instance="qt-note.py"] move position center
 #for_window [instance="qt-note.py"] exec --no-startup-id i3-msg resize set width 400 300; exec --no-startup-id i3-msg move position 1530 754
-for_window [instance="qt-note.py"] exec ~/.config/i3/floatingtoggle.sh tfr 0.8 0.65 0.2 0.3
+for_window [instance="qt-note.py"] exec ~/.config/i3/floatingtoggle.sh tfr 0.9 0.65 0.2 0.3
 for_window [class="jetbrains-idea"]  move container to workspace 3; workspace 3; layout tabbed
 
 #bindsym $mod+u floating toggle; sticky enable; resize set 820 720;  move absolute position 1100 20
 
-bindsym $mod+u exec ~/.config/i3/floatingtoggle.sh tfr 0.8 0.1 0.4 0.6
+bindsym $mod+u exec ~/.config/i3/floatingtoggle.sh tfr 0.9 0.1 0.4 0.55
 
 #assign [class="Google-chrome"] 1
 #assign [class="X-terminal-emulator"] 2
@@ -115,10 +115,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+$left move left 200 px
-bindsym $mod+Shift+$down move down 100 px
-bindsym $mod+Shift+$up move up 100 px
-bindsym $mod+Shift+$right move right 200 px
+bindsym $mod+Shift+$left move left 200 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+$down move down 100 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+$up move up 100 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+$right move right 200 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
 
 bindsym $mod+$left exec --no-startup-id ~/.config/i3/floatingtoggle.sh fl
 bindsym $mod+$down exec --no-startup-id ~/.config/i3/floatingtoggle.sh fd
@@ -150,7 +150,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
+bindsym $mod+space exec --no-startup-id ~/.config/i3/floatingtoggle.sh fmt
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -246,11 +247,11 @@ bindsym $mod+r mode "resize"
 
 set $screen_width_half 900
 set $screen_height_half 500
-bindsym $mod+Shift+mod2+KP_Begin move position center
-bindsym $mod+Shift+mod2+KP_Down move down $screen_height_half px
-bindsym $mod+Shift+mod2+KP_Up move up $screen_height_half px
-bindsym $mod+Shift+mod2+KP_Right move right $screen_width_half px
-bindsym $mod+Shift+mod2+KP_Left move left $screen_width_half px
+bindsym $mod+Shift+mod2+KP_Begin move position center;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+mod2+KP_Down move down $screen_height_half px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+mod2+KP_Up move up $screen_height_half px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+mod2+KP_Right move right $screen_width_half px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+mod2+KP_Left move left $screen_width_half px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status

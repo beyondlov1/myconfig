@@ -67,10 +67,12 @@ do
     if test $active_win_id = $id 
     then
        floating=1
+       old_active_floating_item=${floating_win}
        continue 
     fi
     new_floating_wins[${#new_floating_wins[*]}]=${floating_win}
 done
+
 if test 0 -eq $floating 
 then
    new_floating_wins[${#new_floating_wins[*]}]=${active_win_item} 
@@ -154,4 +156,37 @@ then
     else
         i3-msg focus down
     fi
+fi
+
+if test "fmt" = $op 
+then
+    if test 1 -eq $floating 
+    then
+        sw=$(get_screen_width)
+        sh=$(get_screen_height)
+        x=$(echo "scale=0;$sw/1-100" | bc -l)
+        y=$(echo ${old_active_floating_item} | cut -d ':' -f 2 | cut -d ',' -f 2)
+        echo $x $y
+        i3-msg move absolute position $x $y
+        i3-msg focus mode_toggle
+    else
+        i3-msg focus mode_toggle
+        i3-msg move position center
+    fi
+fi
+
+if test "move" = $op 
+then
+   for floating_win in $floating_wins
+   do
+        id=$(echo ${floating_win} | cut -d ':' -f 1 )
+        if test $active_win_id = $id 
+        then
+            floating=1
+            new_floating_wins[${#new_floating_wins[*]}]=$active_win_item 
+            continue 
+        fi
+        new_floating_wins[${#new_floating_wins[*]}]=${floating_win}
+    done 
+    echo ${new_floating_wins[*]} > ~/.config/i3/floating.win 
 fi
