@@ -142,7 +142,14 @@ if test "fu" = $op
 then
     if test 1 -eq $floating 
     then
+        sw=$(get_screen_width)
+        sh=$(get_screen_height)
+        x=$(echo "scale=0;$sw/1-100" | bc -l)
+        y=$(echo ${old_active_floating_item} | cut -d ':' -f 2 | cut -d ',' -f 2)
+        echo $x $y
+        i3-msg move absolute position $x $y 
         i3-msg focus left
+       i3-msg move position center
     else
         i3-msg focus up 
     fi
@@ -152,7 +159,14 @@ if test "fd" = $op
 then
     if test 1 -eq $floating 
     then
+        sw=$(get_screen_width)
+        sh=$(get_screen_height)
+        x=$(echo "scale=0;$sw/1-100" | bc -l)
+        y=$(echo ${old_active_floating_item} | cut -d ':' -f 2 | cut -d ',' -f 2)
+        echo $x $y
+        i3-msg move absolute position $x $y 
         i3-msg focus right
+        i3-msg move position center
     else
         i3-msg focus down
     fi
