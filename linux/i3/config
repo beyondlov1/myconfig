@@ -35,7 +35,7 @@ for_window [window_role="task_dialog"] floating enable
 
 #for_window [class="X-terminal-emulator"]  move container to workspace 2; workspace 2
 for_window [class="Google-chrome"]  move container to workspace 1; workspace 1
-for_window [class="Firefox"]  move container to workspace 1; workspace 1
+#for_window [class="Firefox"]  move container to workspace 1; workspace 1
 #for_window [class="Code"]  move container to workspace 4; workspace 4
 #for_window [instance="qt-note.py"] sticky enable
 #for_window [instance="qt-note.py"] floating enable
@@ -92,7 +92,8 @@ bindsym $mod+q exec jumpapp chrome
 bindsym $mod+n exec qt-note.sh
 
 # kill focused window
-bindsym $mod+F1 exec --no-startup-id ~/.config/i3/floatingtoggle.sh k
+#bindsym $mod+F1 exec --no-startup-id ~/.config/i3/floatingtoggle.sh k
+bindsym $mod+F1 kill 
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -115,10 +116,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+$left move left 200 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
-bindsym $mod+Shift+$down move down 100 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
-bindsym $mod+Shift+$up move up 100 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
-bindsym $mod+Shift+$right move right 200 px;exec --no-startup-id ~/.config/i3/floatingtoggle.sh move
+bindsym $mod+Shift+$left move left 200 px
+bindsym $mod+Shift+$down move down 100 px
+bindsym $mod+Shift+$up move up 100 px
+bindsym $mod+Shift+$right move right 200 px
 
 #bindsym $mod+$left exec --no-startup-id ~/.config/i3/floatingtoggle.sh fl
 #bindsym $mod+$down exec --no-startup-id ~/.config/i3/floatingtoggle.sh fd
@@ -150,8 +151,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-#bindsym $mod+space focus mode_toggle
-bindsym $mod+space exec --no-startup-id ~/.config/i3/floatingtoggle.sh fmt
+bindsym $mod+space focus mode_toggle
+#bindsym $mod+space exec --no-startup-id ~/.config/i3/floatingtoggle.sh fmt
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -229,6 +230,11 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+i move scratchpad
 bindsym $mod+o scratchpad show
 
+bindsym Ctrl+Mod4+h resize shrink width 20 px or 20 ppt
+bindsym Ctrl+Mod4+j resize grow height 20 px or 20 ppt
+bindsym Ctrl+Mod4+k resize shrink height 20 px or 20 ppt
+bindsym Ctrl+Mod4+l resize grow width 20 px or 20 ppt
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -255,7 +261,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+#bindsym $mod+r mode "resize"
 
 set $screen_width_half 900
 set $screen_height_half 500
